@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@media print {
+  /* Hide navigation, external link indicators, or other non-CV stuff */
+  nav,
+  a[href^="http"]::after {
+    display: none !important;
+  }
+
+  /* Expand content for print */
+  main {
+    max-width: none;
+    padding: 0;
+  }
+
+  /* Optional: remove background colors for ink savings */
+  * {
+    background: transparent !important;
+    color: black !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  /* Adjust text size if needed */
+  body {
+    font-size: 12pt;
+    line-height: 1.4;
+  }
+}
