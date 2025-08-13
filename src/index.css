@@ -1,31 +1,19 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* Tailwind v4 */
+@import "tailwindcss";
 
+/* nicer links + focus (no @layer in v4 for simple utilities) */
+.link {
+  /* only bare utilities in @apply */
+  @apply underline underline-offset-4 hover:opacity-80 rounded;
+}
+.link:focus-visible {
+  @apply outline-none ring-2 ring-indigo-500;
+}
+
+/* print-friendly */
 @media print {
-  /* Hide navigation, external link indicators, or other non-CV stuff */
-  nav,
-  a[href^="http"]::after {
-    display: none !important;
-  }
-
-  /* Expand content for print */
-  main {
-    max-width: none;
-    padding: 0;
-  }
-
-  /* Optional: remove background colors for ink savings */
-  * {
-    background: transparent !important;
-    color: black !important;
-    box-shadow: none !important;
-    text-shadow: none !important;
-  }
-
-  /* Adjust text size if needed */
-  body {
-    font-size: 12pt;
-    line-height: 1.4;
-  }
+  .no-print { display: none !important; }
+  main { max-width: none !important; padding: 0 !important; }
+  * { background: transparent !important; color: #000 !important; box-shadow: none !important; text-shadow: none !important; }
+  a::after { content: "" !important; }
 }
